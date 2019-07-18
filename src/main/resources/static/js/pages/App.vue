@@ -17,10 +17,37 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import { mapState, mapMutations } from 'vuex'
+    import { addHandler} from 'util/ws'
+
     export default {
         computed: mapState(['profile']),
-        name: "App",
+        methods: {
+            ...mapMutations([
+                'addMessageMutation',
+                'removeMessageMutation'
+            ])
+        },
+        created() {
+            addHandler(data => {
+                if (data.objectType === 'MESSAGE') {
+                    switch (data.eventType) {
+                        case 'CREATE':
+                            this.addMessageMutation(data.body)
+                            break
+                        case 'UPDATE':
+                            break
+                        case 'REMOVE':
+                            this.removeMessageMutation(data.body)
+                            break
+                        default:
+                            console.error(`Looks like the event type if unknown "${data.eventType}"`)
+                    }
+                } else {
+                    console.error(`Looks like the object type if unknown "${data.objectType}"`)
+                }
+            })
+        },
         beforeMount() {
             if (!this.profile) {
                 this.$router.replace('/auth')
