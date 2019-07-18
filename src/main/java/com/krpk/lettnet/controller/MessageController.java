@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+@RequestMapping("/message")
 public class MessageController {
 
     private final MessageRepo messageRepo;

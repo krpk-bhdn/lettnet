@@ -7,9 +7,9 @@ import Auth from 'pages/Auth.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    {path: '/', MessageList},
+    {path: '/', component: MessageList},
     {path: '/auth', component: Auth},
-    {path: '*', MessageList}
+    {path: '*', component: MessageList}
 ]
 
 

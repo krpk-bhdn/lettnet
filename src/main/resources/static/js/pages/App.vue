@@ -5,7 +5,7 @@
             <v-toolbar-title>Lett<b>Net</b></v-toolbar-title>
 
             <v-spacer></v-spacer>
-            <span v-if="profile">{{profile.name}}</span>
+            <span v-if="profile">{{ profile.name }}</span>
             <v-btn v-if="profile" icon href="/logout">
                 <v-icon>exit_to_app</v-icon>
             </v-btn>
@@ -17,13 +17,10 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
+        computed: mapState(['profile']),
         name: "App",
-        data() {
-            return {
-                profile: frontendData.profile
-            }
-        },
         beforeMount() {
             if (!this.profile) {
                 this.$router.replace('/auth')

@@ -1,6 +1,8 @@
 package com.krpk.lettnet.controller;
 
 import com.krpk.lettnet.domain.User;
+import com.krpk.lettnet.repo.MessageRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,8 +16,15 @@ import java.util.HashMap;
 @RequestMapping("/")
 public class MainController {
 
+    private final MessageRepo messageRepo;
+
     @Value("${spring.profiles.active}")
     private String profile;
+
+    @Autowired
+    public MainController(MessageRepo messageRepo) {
+        this.messageRepo = messageRepo;
+    }
 
     @GetMapping
     public String main(
@@ -26,6 +35,7 @@ public class MainController {
 
         if (user != null) {
             data.put("profile", user);
+            data.put("messages", messageRepo.findAll());
         }
 
         model.addAttribute("frontendData", data);
