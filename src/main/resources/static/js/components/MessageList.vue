@@ -4,10 +4,22 @@
             <v-flex :xs10="$vuetify.breakpoint.smAndUp"
                     :offset-xs1="$vuetify.breakpoint.smAndUp">
                 <v-layout align-space-around justify-start column>
-                    <message-row v-for="message in sortedMessages"
-                                 :key="message.id"
-                                 :message="message"/>
                     <message-form class="ma-3" />
+
+                    <v-container
+                            id="scroll-target"
+                            style="max-height: 60vh"
+                            class="scroll-y">
+                        <v-layout align-space-around
+                                  justify-start column
+                                  fill-height>
+
+                            <message-row v-for="message in sortedMessages"
+                                         :key="message.id"
+                                         :message="message"/>
+                        </v-layout>
+
+                    </v-container>
                 </v-layout>
             </v-flex>
         </v-layout>
@@ -22,7 +34,7 @@
 
     export default {
         components: { MessageRow, MessageForm },
-        computed: mapGetters(['sortedMessages'])
+        computed: mapGetters(['sortedMessages']),
     }
 </script>
 

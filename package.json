@@ -1,7 +1,7 @@
 {
   "name": "lettnet",
   "version": "1.0.0",
-  "description": "Mini Twitter",
+  "description": "A small social network",
   "main": "index.js",
   "repository": "git@github.com:krpk-bhdn/lettnet.git",
   "author": "<krupko98@gmail.com>",

@@ -2,10 +2,10 @@
     <v-card flat >
         <v-card-text>
             <v-layout align-center mb-3>
-                <v-avatar class="mr-3">
+                <v-avatar size="32px" class="mr-3">
                     <img :src="message.author.picture">
                 </v-avatar>
-                <strong class="title">{{ message.author.name }}</strong>
+                <span class="title font-weight-regular font-italic">{{ message.author.name }}</span>
                 <v-spacer></v-spacer>
                 <v-btn icon @click="del">
                     <v-icon>delete</v-icon>

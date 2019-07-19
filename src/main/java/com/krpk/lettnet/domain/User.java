@@ -1,5 +1,6 @@
 package com.krpk.lettnet.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
@@ -22,5 +23,6 @@ public class User implements Serializable {
     private String locale;
     @JsonView(Views.IdName.class)
     private String picture;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEEE, MMMM dd, yyyy, hh:mm a")
     private LocalDateTime lastVisit;
 }
