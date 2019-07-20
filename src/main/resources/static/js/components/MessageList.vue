@@ -9,7 +9,7 @@
                     <v-container
                             id="scroll-target"
                             style="max-height: 60vh"
-                            class="scroll-y">
+                            class="scroll-y pa-1">
                         <v-layout align-space-around
                                   justify-start column
                                   fill-height>

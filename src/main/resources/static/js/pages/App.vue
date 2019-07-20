@@ -1,4 +1,4 @@
-<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<template>
     <v-app class="grey lighten-4">
         <v-toolbar>
             <v-toolbar-title>Lett<b>Net</b></v-toolbar-title>
@@ -119,6 +119,8 @@
         beforeMount() {
             if (!this.profile) {
                 this.$router.replace('/auth')
+            } else if (this.$route.path === '/auth') {
+                this.$router.replace('/')
             }
         }
     }

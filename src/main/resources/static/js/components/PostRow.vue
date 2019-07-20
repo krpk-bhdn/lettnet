@@ -8,10 +8,10 @@
                     </v-avatar>
                     <span class="title font-weight-regular font-italic">{{ post.author.name }}</span>
                     <v-spacer></v-spacer>
-                    <v-btn icon @click="del">
+                    <v-btn v-if="profile.id === post.author.id" icon @click="">
                         <v-icon>edit</v-icon>
                     </v-btn>
-                    <v-btn icon @click="del">
+                    <v-btn v-if="profile.id === post.author.id" icon @click="del">
                         <v-icon>delete</v-icon>
                     </v-btn>
                 </v-layout>
@@ -37,9 +37,10 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapActions, mapState } from 'vuex'
     export default {
         props: ['post'],
+        computed: mapState(["profile"]),
         methods: {
             ...mapActions(['removePostAction']),
             del() {

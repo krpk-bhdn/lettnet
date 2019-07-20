@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lettnet
+    username: postgres
+    password: postgres
+
+  jpa:
+    generate-ddl: false
+    show-sql: false
+
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+security:
+  oauth2:
+    client:
+      clientId: 782529770208-oipms3gnkhedpdmctuqbf7u8f1u3lep3.apps.googleusercontent.com
+      clientSecret: ${clientSecret}
+      clientAuthenticationScheme: form
+      scope: openid,email,profile
+      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    resource:
+      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+      preferTokenInfo: true
