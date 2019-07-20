@@ -92,7 +92,8 @@
                 this.$router.push('/')
             },
             showProfile() {
-                this.$router.push('/profile')
+                this.$router.push(`/profile/${this.profile.id}`)
+                this.$router.go()
             }
         },
         created() {

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.krpk.lettnet.domain.User;
 import com.krpk.lettnet.domain.Views;
 import com.krpk.lettnet.repo.MessageRepo;
+import com.krpk.lettnet.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,11 +25,13 @@ public class MainController {
     private String profile;
 
     private final MessageRepo messageRepo;
+    private final PostRepo postRepo;
     private final ObjectWriter writer;
 
     @Autowired
-    public MainController(MessageRepo messageRepo, ObjectMapper mapper) {
+    public MainController(MessageRepo messageRepo, PostRepo postRepo, ObjectMapper mapper) {
         this.messageRepo = messageRepo;
+        this.postRepo = postRepo;
         this.writer = mapper
                 .setConfig(mapper.getSerializationConfig())
                 .writerWithView(Views.IdName.class);
@@ -43,10 +46,13 @@ public class MainController {
 
         if (user != null) {
             data.put("profile", user);
+            data.put("posts", postRepo.findAll());
             String messages = writer.writeValueAsString(messageRepo.findAll());
             model.addAttribute("messages", messages);
+
         } else {
             model.addAttribute("messages", "[]");
+            data.put("posts", "[]");
         }
         model.addAttribute("frontendData", data);
         model.addAttribute("isDevMode", "dev".equals(profile));
