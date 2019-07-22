@@ -56,13 +56,12 @@
 
                             <v-divider></v-divider>
 
-                            <v-list-tile>
+                            <v-list-tile @click="showSettings">
                                 <v-list-tile-action>
                                     <v-icon>settings</v-icon>
                                 </v-list-tile-action>
                                 <v-list-tile-title>Settings</v-list-tile-title>
                             </v-list-tile>
-
                         </v-list>
                     </v-navigation-drawer>
                 </v-flex>
@@ -94,6 +93,9 @@
             showProfile() {
                 this.$router.push(`/profile/${this.profile.id}`)
                 this.$router.go()
+            },
+            showSettings() {
+                this.$router.push('/settings')
             }
         },
         created() {

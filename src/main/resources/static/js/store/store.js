@@ -53,8 +53,13 @@ export default new Vuex.Store({
         getUserMutation(state, user) {
             state.user = user
         },
+
+        updateProfileMutation(state, user) {
+            state.profile = user;
+        }
     },
     actions: {
+
         async addMessageAction({commit, state}, message) {
             const result = await messageApi.add(message)
             const data = await result.json()
@@ -64,6 +69,7 @@ export default new Vuex.Store({
                 commit('addMessageMutation', data)
             }
         },
+
         async removeMessageAction({commit, state}, message) {
             const result = await messageApi.remove(message.id)
             const data = await result.json()
@@ -80,6 +86,7 @@ export default new Vuex.Store({
                 commit('getPostMutation', data)
 
         },
+
         async addPostAction({commit, state}, post) {
             const result = await postApi.add(post)
             const data = await result.json()
@@ -89,6 +96,7 @@ export default new Vuex.Store({
                 commit('addPostMutation', data)
             }
         },
+
         async removePostAction({commit, state}, post) {
             const result = await postApi.remove(post.id)
 
@@ -97,13 +105,19 @@ export default new Vuex.Store({
             }
         },
 
+
         async getUserAction({commit, state}, userId) {
             const result = await userApi.get(userId)
             const data = await result.json()
 
             commit('getUserMutation', data)
+        },
 
+        async updateUserAction({commit, state}, user) {
+            const result = await userApi.update(user)
+            const data = await result.json()
+
+            commit('updateProfileMutation', data)
         }
-
     }
 })

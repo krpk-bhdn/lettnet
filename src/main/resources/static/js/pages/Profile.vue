@@ -22,22 +22,22 @@
 
                                 <h3 class="headline mt-2">{{ user.name }}</h3>
                                 <span>{{user.lastVisit}}</span>
-                                <div class="mt-3">
-                                    <span>Student from National University of Life and Environmental of Ukraine</span>
+                                <div class="mt-3" v-if="user.headline">
+                                    <span>{{ user.headline }}</span>
                                 </div>
 
                             </v-container>
                         </v-flex>
 
                         <v-flex (xs12 | sm5 | md5) offset-(xs0 | lg2) class="ma-3">
-                            <div class="mb-1">
+                            <div class="mb-1" v-if="user.email">
                                 <span>E-mail: {{user.email}}</span>
                             </div>
-                            <div class="mb-1">
+                            <div class="mb-1" v-if="user.locale">
                                 <span>Country: {{user.locale}}</span>
                             </div>
-                            <div class="mb-1">
-                                <span>Bio: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, unde!</span>
+                            <div class="mb-1" v-if="user.bio">
+                                <span>{{ user.bio }}</span>
                             </div>
 
                         </v-flex>
@@ -59,8 +59,9 @@
 <script>
     import { mapState, mapActions } from 'vuex'
     import PostList from "../components/PostList.vue";
+    import UploadFile from 'components/UploadFile.vue'
     export default {
-        components: { PostList },
+        components: { PostList, UploadFile },
         computed: mapState(["profile", "user"]),
         methods: {
             ...mapActions(["getUserAction"])
