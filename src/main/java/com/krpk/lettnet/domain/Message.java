@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,17 +14,20 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode(of = {"id"})
 @Data
-public class Message {
+public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(Views.Id.class)
     private Long id;
-    @Column(length = 5000)
+
     @JsonView(Views.IdName.class)
     private String text;
 
     @JsonView(Views.IdName.class)
     private LocalDateTime publicationDate;
+
+    private String images;
+    private String files;
 
     @ManyToOne
     @JoinColumn(name = "user_id", updatable = false)

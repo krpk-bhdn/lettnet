@@ -45,7 +45,6 @@
                     </v-layout>
 
                 </v-card>
-
             </v-flex>
 
             <v-flex xs8 offset-xs2>
@@ -59,9 +58,8 @@
 <script>
     import { mapState, mapActions } from 'vuex'
     import PostList from "../components/PostList.vue";
-    import UploadFile from 'components/UploadFile.vue'
     export default {
-        components: { PostList, UploadFile },
+        components: { PostList },
         computed: mapState(["profile", "user"]),
         methods: {
             ...mapActions(["getUserAction"])

@@ -21,8 +21,10 @@ public class Post {
     private Long id;
 
     @JsonView(Views.IdName.class)
-    @Column(length = 10000)
     private String text;
+
+    private String images;
+    private String files;
 
     @JsonView(Views.IdName.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEEE, MMMM dd, yyyy, hh:mm a")

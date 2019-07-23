@@ -20,6 +20,8 @@ public class User implements Serializable {
     @JsonView(Views.IdName.class)
     private String name;
     private String email;
+    private String bio;
+    private String headline;
     private String locale;
     @JsonView(Views.IdName.class)
     private String picture;

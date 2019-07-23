@@ -17,6 +17,11 @@ spring:
           lob:
             non_contextual_creation: true
 
+  servlet:
+    multipart:
+      max-file-size: 512MB
+      max-request-size: 512MB
+
 security:
   oauth2:
     client:
@@ -31,4 +36,4 @@ security:
       preferTokenInfo: true
 
 upload:
-  path: /home/idelus/dev/blog-spring-mvc/uploads
+  path: /home/idelus/dev/lettnet/uploads
