@@ -1,6 +1,6 @@
 <template>
     <v-app class="grey lighten-4">
-        <v-toolbar>
+        <v-toolbar fixed>
             <v-toolbar-title>Lett<b>Net</b></v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items v-if="profile">
@@ -13,10 +13,12 @@
             </v-toolbar-items>
         </v-toolbar>
 
-        <v-content id="content">
+        <v-content id="content" >
             <v-layout>
                 <v-flex xs2 v-if="profile">
                     <v-navigation-drawer
+                            fixed
+                            style="margin-top: 64px"
                             class="grey lighten-4"
                             stateless
                             value="true"
@@ -33,25 +35,11 @@
 
                             <v-divider></v-divider>
 
-                            <v-list-tile>
-                                <v-list-tile-action>
-                                    <v-icon>list</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-title>News</v-list-tile-title>
-                            </v-list-tile>
-
-                            <v-list-tile>
-                                <v-list-tile-action>
-                                    <v-icon>people</v-icon>
-                                </v-list-tile-action>
-                                <v-list-tile-title>Friends</v-list-tile-title>
-                            </v-list-tile>
-
                             <v-list-tile @click="showMessages">
                                 <v-list-tile-action>
                                     <v-icon>chat</v-icon>
                                 </v-list-tile-action>
-                                <v-list-tile-title>Messages</v-list-tile-title>
+                                <v-list-tile-title>Chat</v-list-tile-title>
                             </v-list-tile>
 
                             <v-divider></v-divider>
@@ -66,7 +54,7 @@
                     </v-navigation-drawer>
                 </v-flex>
                 <v-flex>
-                    <v-container>
+                    <v-container style="margin-top: 64px">
                         <router-view></router-view>
                     </v-container>
                 </v-flex>

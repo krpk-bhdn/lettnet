@@ -1,5 +1,6 @@
 package com.krpk.lettnet.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,9 +25,12 @@ public class Message implements Serializable {
     private String text;
 
     @JsonView(Views.IdName.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "EEEE, MMMM dd, yyyy, hh:mm a")
     private LocalDateTime publicationDate;
 
+    @JsonView(Views.IdName.class)
     private String images;
+    @JsonView(Views.IdName.class)
     private String files;
 
     @ManyToOne

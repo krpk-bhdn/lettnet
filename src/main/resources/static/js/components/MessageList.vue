@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout align-space-around justify-start row>
-            <v-flex :xs10="$vuetify.breakpoint.smAndUp"
+            <v-flex :xs9="$vuetify.breakpoint.smAndUp"
                     :offset-xs1="$vuetify.breakpoint.smAndUp">
                 <v-layout align-space-around justify-start column>
                     <message-form class="ma-3" />

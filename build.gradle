@@ -36,4 +36,5 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core'
 	implementation 'org.projectlombok:lombok:1.18.8'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }

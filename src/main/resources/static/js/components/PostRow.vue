@@ -8,9 +8,6 @@
                     </v-avatar>
                     <span class="title font-weight-regular font-italic">{{ post.author.name }}</span>
                     <v-spacer></v-spacer>
-                    <v-btn v-if="profile.id === post.author.id" icon @click="">
-                        <v-icon>edit</v-icon>
-                    </v-btn>
                     <v-btn v-if="profile.id === post.author.id" icon @click="del">
                         <v-icon>delete</v-icon>
                     </v-btn>
@@ -66,12 +63,7 @@
             </v-card-text>
 
             <v-card-actions>
-                <v-btn icon @click="">
-                    <v-icon>favorite_border</v-icon>
-                </v-btn>
-                <v-btn icon @click="">
-                    <v-icon>comment</v-icon>
-                </v-btn>
+
                 <v-spacer></v-spacer>
                 <span class="mr-3">{{ post.publicationDate }}</span>
             </v-card-actions>

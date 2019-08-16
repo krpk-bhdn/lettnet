@@ -80,7 +80,7 @@
             ...mapActions(['updateUserAction']),
             save() {
                 this.updateUserAction({id: this.profile.id,
-                    name,
+                    name: this.name,
                     headline: this.headline,
                     bio: this.bio,
                     locale: this.locale

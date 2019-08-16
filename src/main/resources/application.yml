@@ -36,4 +36,4 @@ security:
       preferTokenInfo: true
 
 upload:
-  path: /home/idelus/dev/lettnet/uploads
+  path: /C:/dev/lettnet/uploads
